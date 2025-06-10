@@ -11,21 +11,29 @@ st.title("📄 Filtro de Planilhas do REDCap - CCP IAVC")
 
 # 📍 1. Identificação do Usuário
 st.subheader("👤 Identificação do Usuário")
-email = st.text_input("E-mail:", placeholder="seuemail@exemplo.com") 
-telefone = st.text_input("Telefone (WhatsApp):", placeholder="(11) 91234-5678")
 
-if st.button("🔐 Entrar"):
-    if not email or not telefone:
-        st.warning("Por favor, preencha seu e-mail e telefone para continuar.")
-        st.stop()
+if "autenticado" not in st.session_state:
+    st.session_state.autenticado = False
+
+if not st.session_state.autenticado:
+    email = st.text_input("E-mail:", placeholder="seuemail@exemplo.com") 
+    telefone = st.text_input("Telefone (WhatsApp):", placeholder="(11) 91234-5678")
+    
+    if st.button("🔐 Entrar"):
+        if not email or not telefone:
+            st.warning("Por favor, preencha seu e-mail e telefone para continuar.")
+            st.stop()
+        else:
+            st.session_state.autenticado = True
+            st.session_state.email = email
+            st.session_state.telefone = telefone
+            st.experimental_rerun()
     else:
-        st.success(f"Bem-vindo! Acesso liberado para: {email}")
+        st.stop()
 else:
-    st.stop()
+    st.success(f"✅ Acesso liberado para: {st.session_state.email}")
 
-if not email or not telefone:
-    st.warning("Por favor, preencha seu e-mail e telefone para continuar. Sem essas informações não podemos continuar")
-    st.stop()
+
 
 # 📥 2. Upload do CSV do redcap
 st.subheader("📥 Upload da Planilha (.csv) do REDCap, é importante que esteja na opção 'use comma(,) as decimal for all numbers e csv/microsoft excel (raw data)'")
