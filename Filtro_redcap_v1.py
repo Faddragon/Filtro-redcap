@@ -32,7 +32,7 @@ if not st.session_state.autenticado:
             st.session_state.email = email.strip()
             st.session_state.telefone = telefone.strip()
             st.success(f"✅ Acesso liberado para: {email}")
-            st.experimental_rerun()
+          #st.experimental_rerun()
     else:
         st.stop()
 else:
