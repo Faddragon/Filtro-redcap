@@ -38,14 +38,11 @@ else:
 
 # 📥 2. Upload do CSV do REDCap
 st.subheader("📥 Upload da Planilha (.csv) do REDCap")
-uploaded_file = st.file_uploader(
-    "Selecione o arquivo CSV exportado do REDCap",
-    type=["csv"]
-)
+uploaded_file = st.file_uploader("Selecione o arquivo CSV exportado do REDCap", type=["csv"])
 
 if uploaded_file:
     try:
-        df = pd.read_csv(uploaded_file, sep=None, engine="python")
+        df = pd.read_csv(uploaded_file, sep=",", encoding="utf-8", quotechar='"', on_bad_lines='skip', engine="python")
     except Exception as e:
         st.error(f"❌ Erro ao ler o CSV: {e}")
         st.stop()
