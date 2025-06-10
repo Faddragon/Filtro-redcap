@@ -138,7 +138,7 @@ if uploaded_file:
 st.markdown("""
 <hr style="margin-top: 2em; margin-bottom: 1em;">
 <div style='text-align: center; font-size: 14px; color: gray;'>
-    🔬 Desenvolvido por <strong>CECI Health Tech</strong> · <em> Computational Engine for Clinical Insights</em><br>
+    🔬 Desenvolvido por <strong>CECI </strong> · <em> Computational Engine for Clinical Insights</em><br>
     📧 Contato: <a href='mailto:franciscoadias@gmail.com'>franciscoadias@gmail.com</a> ·
 </div>
 """, unsafe_allow_html=True)
