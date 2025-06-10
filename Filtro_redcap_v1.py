@@ -42,7 +42,12 @@ else:
 
 # 📥 2. Upload do CSV do redcap
 st.subheader("📥 Upload da Planilha (.csv) do REDCap, é importante que esteja na opção 'use comma(,) as decimal for all numbers e csv/microsoft excel (raw data)'")
-uploaded_file = st.file_uploader("Selecione o arquivo CSV exportado do REDCap", type=["csv"])
+try:
+    df = pd.read_csv(uploaded_file, sep=",", encoding="utf-8", engine="python")
+except Exception as e:
+    st.error(f"❌ Erro ao ler o CSV: {e}")
+    st.stop()
+("Selecione o arquivo CSV exportado do REDCap", type=["csv"])
 
 if uploaded_file:
     try:
