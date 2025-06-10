@@ -20,6 +20,7 @@ if "autenticado" not in st.session_state:
 if not st.session_state.autenticado:
     email = st.text_input("E-mail:", placeholder="seuemail@exemplo.com")
     telefone = st.text_input("Telefone (WhatsApp):", placeholder="(11) 91234-5678")
+
     if st.button("🔐 Entrar"):
         if not email or not telefone:
             st.warning("Por favor, preencha seu e-mail e telefone para continuar.")
@@ -29,14 +30,8 @@ if not st.session_state.autenticado:
             st.session_state.email = email
             st.session_state.telefone = telefone
             st.success(f"✅ Acesso liberado para: {email}")
-            st.experimental_set_query_params(logado="1")
-            st.experimental_rerun()
-    else:
-        st.stop()
 else:
     st.success(f"✅ Acesso liberado para: {st.session_state.email}")
-
-
 
 
 # 📥 2. Upload do CSV do redcap
