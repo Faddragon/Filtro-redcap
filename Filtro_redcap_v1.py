@@ -45,10 +45,11 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file:
     try:
-        df = pd.read_csv(uploaded_file, sep=",", encoding="utf-8", engine="python")
+        df = pd.read_csv(uploaded_file, sep=None, engine="python")
     except Exception as e:
         st.error(f"❌ Erro ao ler o CSV: {e}")
         st.stop()
+
 
     # 3️⃣ Agrupamento por hospital_registry (primeiro preenchimento não nulo por coluna)
     df_grouped = df.groupby("hospital_registry", as_index=False).first()
