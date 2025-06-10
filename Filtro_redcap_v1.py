@@ -109,7 +109,7 @@ if uploaded_file:
         "diagnoses", "surgery", "non_operatory_conduct", "non_operatory_other", "palliation",
         "palliation_oher", "tqt_paliativo", "gtt_paliativo", "sne_paliativo", "oral_sex",
         "anal_sex", "vaginal_sex", "sexual_age", "number_sex_partner", "conduct_other"]
-    ]
+    
     df_filtrado = df_grouped[[col for col in colunas_relevantes if col in df_grouped.columns]].copy()
 
     # 5️⃣ Subdivisão em abas
