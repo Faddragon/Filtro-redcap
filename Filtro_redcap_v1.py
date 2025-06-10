@@ -14,11 +14,12 @@ st.subheader("👤 Identificação do Usuário")
 
 if "autenticado" not in st.session_state:
     st.session_state.autenticado = False
+    st.session_state.email = ""
+    st.session_state.telefone = ""
 
 if not st.session_state.autenticado:
-    email = st.text_input("E-mail:", placeholder="seuemail@exemplo.com") 
+    email = st.text_input("E-mail:", placeholder="seuemail@exemplo.com")
     telefone = st.text_input("Telefone (WhatsApp):", placeholder="(11) 91234-5678")
-    
     if st.button("🔐 Entrar"):
         if not email or not telefone:
             st.warning("Por favor, preencha seu e-mail e telefone para continuar.")
@@ -27,11 +28,14 @@ if not st.session_state.autenticado:
             st.session_state.autenticado = True
             st.session_state.email = email
             st.session_state.telefone = telefone
+            st.success(f"✅ Acesso liberado para: {email}")
+            st.experimental_set_query_params(logado="1")
             st.experimental_rerun()
     else:
         st.stop()
 else:
     st.success(f"✅ Acesso liberado para: {st.session_state.email}")
+
 
 
 
