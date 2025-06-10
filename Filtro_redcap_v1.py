@@ -52,7 +52,7 @@ if uploaded_file:
     df_grouped = df.groupby("hospital_registry", as_index=False).first()
 
     # 4️⃣ Seleção de colunas
-      colunas_relevantes = ["hospital_registry", "record_id", "incl_date", "dob", "age", "sex", "race",
+    colunas_relevantes = ["hospital_registry", "record_id", "incl_date", "dob", "age", "sex", "race",
         "weigh_time0", "height", "bmi_time0", "ecog_time0", "state", "schooling", "job",
         "profession", "religion", "income", "identificacao_e_dados_demograficos_r2_complete",
         "tabacco", "alcohol", "sun", "wood_smoke", "radiation", "burn", "trauma", "family_hist",
